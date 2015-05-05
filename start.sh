@@ -11,6 +11,7 @@ trap clean_up SIGHUP SIGINT SIGTERM
 
 #	Vars
 duration=1
+bitrate=$(expr 2 \* 1000 \* 1000) # default is 4Mbps, but lower bitrate == higher FPS
 
 #	Make directory
 adb shell mkdir /sdcard/screenrecord-data/ || true
@@ -29,7 +30,7 @@ do
 	expired=$previous
 	previous=$now
 	now=$(date +%s)
-	adb shell screenrecord /sdcard/screenrecord-data/$now.m4v &
+	adb shell screenrecord --bit-rate=$bitrate /sdcard/screenrecord-data/$now.m4v &
 	RECORD_PID=$!
 	sleep $duration
 	kill $RECORD_PID

@@ -1,4 +1,4 @@
-#!bin/sh
+#!/bin/sh
 
 #	Cleanups
 function clean_up {

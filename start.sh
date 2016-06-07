@@ -36,5 +36,5 @@ do
 	kill $RECORD_PID
 	adb pull /sdcard/screenrecord-data/$previous.m4v ./files || true &
 	adb shell rm /sdcard/screenrecord-data/$expired.m4v || true &
-	rm /sdcard/screenrecord-data/$expired3.m4v || true &
+	rm -f /sdcard/screenrecord-data/$expired3.m4v || true &
 done
